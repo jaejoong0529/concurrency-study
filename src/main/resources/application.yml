@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: concurrency-study
+  config:
+    import: optional:file:.env[.properties]
+  # Database - MySQL
+  datasource:
+    url: jdbc:mysql://${DB_HOST:}:${DB_PORT:3306}/${DB_NAME:}?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USERNAME:}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+
+  # Redis (로컬 개발용 - Docker로 실행 필요)
+  data:
+    redis:
+      host: ${REDIS_HOST:}
+      port: ${REDIS_PORT:}
