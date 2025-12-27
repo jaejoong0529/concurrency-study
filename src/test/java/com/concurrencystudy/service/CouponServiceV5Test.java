@@ -75,4 +75,3 @@ class CouponServiceV5Test {
         assertThat(result.getIssuedQuantity()).isEqualTo(100);
     }
 }
-
